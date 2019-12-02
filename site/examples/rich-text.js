@@ -92,8 +92,9 @@ const withRichText = editor => {
 }
 
 const isMarkActive = (editor, type) => {
-  const [mark] = Editor.marks(editor, { match: { type }, mode: 'universal' })
-  return !!mark
+  const marks = Editor.activeMarks(editor)
+  const isActive = marks.some(m => m.type === type)
+  return isActive
 }
 
 const isBlockActive = (editor, type) => {
